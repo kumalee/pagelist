@@ -1,2 +1,1 @@
-# pagelist
-openresty service for pagelist 
+# Nginx service for return a page list json content
