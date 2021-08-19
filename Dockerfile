@@ -1,9 +1,13 @@
 FROM nginx:1.21.1-alpine
 
-VOLUME /usr/share/nginx/html/
+RUN mkdir /usr/share/nginx/html/tools
+RUN mkdir /usr/share/nginx/html/config
 
-COPY ./conf/nginx/pagelist.conf /etc/nginx/conf.d/default.conf
-# COPY ./conf/pagelist.sample.json /usr/share/nginx/html/pagelist.json
+VOLUME /usr/share/nginx/html/config
+VOLUME /var/log/nginx/
+
+COPY ./conf/default.conf /etc/nginx/conf.d/default.conf
+COPY ./configs/health.json /usr/share/nginx/html/tools/health.json
 
 EXPOSE 80
 

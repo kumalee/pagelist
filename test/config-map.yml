@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pagelist-config
+  namespace: default
+data:
+  page-list.json: |-
+    {
+      "oc": "index.html",
+      "oc-v2": "index-v2.html",
+      "mypage": "index.mypage.html"
+    }
+  page-render.json: |-
+    {
+      "uat": "uat.test.com",
+      "qa": "qa.test.com",
+      "stg": "stg.test.com",
+      "live": "live.com"
+    }

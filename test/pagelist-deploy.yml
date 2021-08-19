@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pagelist
+  labels:
+    app: pagelist
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pagelist
+  template:
+    metadata:
+      labels:
+        app: pagelist
+    spec:
+      containers:
+      - name: pagelist
+        image: kumali/pagelist:1.0.8
+        ports:
+        - containerPort: 80
+        volumeMounts:
+          - name: pagelist
+            mountPath: "/usr/share/nginx/html/config"
+            readOnly: true
+      volumes:
+      - name: pagelist
+        configMap:
+          name: pagelist-config
